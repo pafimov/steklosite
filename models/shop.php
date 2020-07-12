@@ -25,12 +25,12 @@ use yii\db\ActiveRecord;
                     [['name', 'description'], 'string'],
                     [['price'], 'integer'],
                     [['have'], 'string', 'max' => 30],
-                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg']
+                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg', 'maxSize' => 16000000]
                 ];
         }
         public function setattr(){
             $this->image = UploadedFile::getInstanceByName('image');
-            $path = explode('\\', tempnam('uploads/' , $this->image->basename));
+            $path = explode('/', tempnam('uploads/' , $this->image->basename));
             $this->pth = 'uploads/' . $path[count($path)-1] . '.' . $this->image->extension;
         }
         public function savetodb(){
