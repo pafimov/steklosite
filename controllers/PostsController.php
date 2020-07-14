@@ -13,7 +13,7 @@ class PostsController extends Controller{
         public function actionIndex()
         {
             $pagination = new Pagination([
-                'defaultPageSize' => 1,
+                'defaultPageSize' => 8,
                 'totalCount' => posts::find()->count()
             ]);
             $posts = posts::find()->orderBy('time')->offset($pagination->offset)->limit($pagination->limit)->all();

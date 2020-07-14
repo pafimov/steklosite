@@ -25,7 +25,7 @@ use yii\db\ActiveRecord;
                     [['name', 'description'], 'string'],
                     [['price'], 'integer'],
                     [['have'], 'string', 'max' => 30],
-                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg', 'maxSize' => 1024 * 1024 * 16]
+                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg']
                 ];
         }
         public function setattr(){
