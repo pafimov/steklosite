@@ -25,7 +25,7 @@ use yii\db\ActiveRecord;
                     [['name', 'description'], 'string'],
                     [['price'], 'integer'],
                     [['have'], 'string', 'max' => 30],
-                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg', 'maxSize' => 16000000]
+                    [['image'], 'file', 'skipOnEmpty' => false, 'extensions' =>'png, jpg', 'maxSize' => 1024 * 1024 * 16]
                 ];
         }
         public function setattr(){
@@ -42,6 +42,10 @@ use yii\db\ActiveRecord;
             if($this->validate()){
                 $this->save();
                 $this->image->saveAs($this->pth);
+            }else{
+                print $this->image->error;
+                var_dump($this->image);
+                exit;
             }
         }
         //public function getall(){
