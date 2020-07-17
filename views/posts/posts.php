@@ -6,8 +6,10 @@
     foreach($posts as $post){
         $text = Html::encode($post['text']);
         print <<<_HTML_
-            <div class="card col-12 col-sm-6 col-md-4 col-lg-3">
-            <img src="{$post['imgpath']}" class="card-img-top" alt="...">
+            <div class="card col-12 col-sm-6 col-md-4 col-lg-3 shadow">
+            <div class="inner">
+            <img src="{$post['imgpath']}" class="card-img-top img-fluid" alt="...">
+            </div>
             <div class="card-body">
             <p class="card-text">{$post['text']}</p>
             </div>

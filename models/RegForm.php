@@ -12,7 +12,7 @@
                 [['name', 'phone', 'email'], 'required'],
                 ['email', 'email'],
                 [['phone', 'name'], 'string'],
-                ['phone', 'match', 'pattern' => '$\+[0-9]{11}$', 'message' => 'Введте номер в указанном формате']
+                ['phone', 'match', 'pattern' => '$\+[0-9]{11}$', 'message' => 'Введите номер в указанном формате']
             ];
         }
     }
