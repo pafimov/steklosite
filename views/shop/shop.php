@@ -4,7 +4,7 @@
     //use yii\bootstrap;
     $chtoto =Yii::$app->request->getCsrfToken();
     print <<<_HTML_
-        <form method="POST" action="/?r=shop" class="form-inline mb-4">
+        <form method="POST" action="/?r=shop" class="form-inline mb-4 no-gutter">
             <input type="hidden" name="_csrf" value="{$chtoto}"/>
             <input class="form-control mr-sm-2" type="search" name="name" placeholder="Название" aria-label="Название">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
@@ -21,7 +21,7 @@
           <div class="card-body">
             <h5 class="card-title">{$thing['name']}</h5>
             <p class="card-text"><small class="text-muted">{$thing['have']}</small></p>
-            <p class="card-text">{$thing['price']} руб.</p>
+            <p class="card-text">{$thing['price']}</p>
             <form method="POST" action="/?r=shop">
                 <input type="hidden" name="_csrf" value="{$chtoto}" />
                 <input type="number" value="1" name="kolvo"/>
