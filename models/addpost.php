@@ -20,8 +20,8 @@
         public function savephoto()
         {
             if($this->validate()){
-                $bn = $this->image->basename;
-                $this->imgpath = 'uploads/' . $bn . '.' . $this->image->extension;
+                $path = explode('/', tempnam('uploads/' , $this->image->basename));
+                $this->imgpath = 'uploads/' . $path[count($path)-1] . '.' . $this->image->extension;
                 $this->image->saveAs($this->imgpath);
                 return true;
             }else{

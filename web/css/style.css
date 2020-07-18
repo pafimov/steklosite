@@ -1,8 +1,36 @@
 .nomg {
     margin: 0 !important;
 }
-
 .no-gutter>[class*='col-'] {
     padding-right: 0;
     padding-left: 0;
+}
+.inner{
+    position: relative;
+    overflow: hidden;
+}
+.inner img{
+    transition: all 1.1s ease;
+}
+.inner:hover > img{
+    -moz-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+.btnch{
+    border: 1px solid #3498db;
+    background: none;
+    cursor: pointer;
+    transition: 0.4s;
+    overflow: hidden;
+}
+.btn1{
+    color: #3498db;
+}
+.btn1:hover{
+    background: #3498db;
+    color: #fff;
+}
+.btn1:hover::before{
+    height: 180%;
 }

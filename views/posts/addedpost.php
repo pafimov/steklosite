@@ -3,27 +3,30 @@
     use yii\widgets\ActiveForm;
 
     if($success){
-        $form = ActiveForm::begin();
-            print <<<_HTML_
-                <p>Пост опубликован</p></br>
-            _HTML_;
-            print $form->field($model, 'text')->textInput();
-            print $form->field($model, 'image')->fileInput();
-            print Html::submitButton('Опубликовать', ['class' => 'btn btn-primary']);
-        $form::end();
+        $chtoto =Yii::$app->request->getCsrfToken();
+        print <<<_HTML_
+            <p>Пост опубликован</p></br>
+        _HTML_;
+        print <<<_HTML_
+            <form method="POST" action="/?r=posts/addpost" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="{$chtoto}" />
+                <textarea class="form-control mb-3" name="text" placeholder="Что у Вас нового?"></textarea>
+                <label for="imgpost">Изображение для поста</label>
+                <input  class="form-control-file mb-3" type="file" name="image" class="form-control-file" id="imgpost"/>
+                <input  class="btn btn-primary" type="submit"/>
+            </form>
+        _HTML_;
+            
     }else{
-        $form = ActiveForm::begin();
-            print <<<_HTML_
-                <p>Пост</p></br>
-            _HTML_;
-            if(isset($sp)){
-                //var_dump($sp);
-            }
-            print $form->field($model, 'text')->textInput();
-            print $form->field($model, 'image')->fileInput();
-            print '<div class="form-group">';
-            print Html::submitButton('Опубликовать', ['class' => 'btn btn-primary']);
-            print '</div>';
-        $form::end();
+        $chtoto =Yii::$app->request->getCsrfToken();
+        print <<<_HTML_
+            <form method="POST" action="/?r=posts/addpost" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="{$chtoto}" />
+                <textarea class="form-control mb-3" name="text" placeholder="Что у Вас нового?"></textarea>
+                <label for="imgpost">Изображение для поста</label>
+                <input  class="form-control-file mb-3" type="file" name="image" class="form-control-file" id="imgpost"/>
+                <input  class="btn btn-primary" type="submit"/>
+            </form>
+        _HTML_;
     }
 ?>

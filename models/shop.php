@@ -30,7 +30,7 @@ use yii\db\ActiveRecord;
         }
         public function setattr(){
             $this->image = UploadedFile::getInstanceByName('image');
-            $path = explode('\\', tempnam('uploads/' , $this->image->basename));
+            $path = explode('/', tempnam('uploads/' , $this->image->basename));
             $this->pth = 'uploads/' . $path[count($path)-1] . '.' . $this->image->extension;
         }
         public function savetodb(){
@@ -42,6 +42,10 @@ use yii\db\ActiveRecord;
             if($this->validate()){
                 $this->save();
                 $this->image->saveAs($this->pth);
+            }else{
+                print $this->image->error;
+                var_dump($this->image);
+                exit;
             }
         }
         //public function getall(){
