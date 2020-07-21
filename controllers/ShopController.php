@@ -17,13 +17,26 @@ use Exception;
                     $datas = shop::find()->limit(1)->where(['id' => $_POST['addtocart']])->asArray()->one();
                     //Yii::$app->session->set('cart', new ArrayObject);
                     $cart = Yii::$app->session;
+                    if(isset($_SESSION['cart'])){
+                    foreach($_SESSION['cart'] as $key => $value){
+                        if($value['name'] == $datas['name']){
+                            $_SESSION['cart'][$key]['count'] += $_POST['count'];
+                            header('Location: /?r=shop/');  
+                            print 'lol';
+                            exit;      
+                        }
+                    }
+                    }
                     $_SESSION['cart'][] = array('id' => $datas['id'], 'name' => $datas['name'], 'price' => $datas['price'], 'count' => $_POST['count']);
                     if(isset($cart['cartcount'])){
                         $cart['cartcount'] += 1;
                     }else{
                         $cart['cartcount'] = 1;
                     }
-                    $data = shopsearch::getall();
+                    //$data = shopsearch::getall();
+                    header('Location: /?r=shop/');
+                    print 'lol';
+                    exit;
                 }elseif(isset($_POST['name'])){
                     $data = shopsearch::byname($_POST['name']);
                 }
@@ -48,6 +61,7 @@ use Exception;
             return $this->render('thing', ['data' => $data]);
         }
         public function actionCreate(){
+            if($_SESSION['logged'] ?? 0 == 1){
             if(Yii::$app->request->isPost){
                 try{
                     $thing = new shop();
@@ -61,6 +75,11 @@ use Exception;
                 return $this->render('creatething', ['success' => true]);
             }else{
                 return $this->render('creatething', ['success' => false]);
+            }
+            }else{
+                header('Location: /?r=site/admin');
+                print 'lol';
+                exit;
             }
         }public function actionCart(){
             

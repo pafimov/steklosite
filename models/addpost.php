@@ -20,7 +20,7 @@
         public function savephoto()
         {
             if($this->validate()){
-                $path = explode('/', tempnam('uploads/' , $this->image->basename));
+                $path = explode('\\', tempnam('uploads/' , $this->image->basename));
                 $this->imgpath = 'uploads/' . $path[count($path)-1] . '.' . $this->image->extension;
                 $this->image->saveAs($this->imgpath);
                 return true;

@@ -104,4 +104,23 @@ class SiteController extends Controller
             return $this->render('form', ['model' => $model]); 
         }
     }
+    public function actionAdmin(){
+        if((Yii::$app->request->isPost) && ($_SESSION['logged'] ?? 0 != 1)){
+            if($_POST['login'] == "admin" && $_POST['password'] == "123"){
+                $_SESSION['logged'] = 1;
+                header('Location: /?r=shop');
+                print 'lol';
+                exit;
+            }else{
+                return $this->render('adminform');
+            }
+        }else{
+            if($_SESSION['logged'] == 1){
+                header('Location: /?r=shop');
+                print 'lol';
+                exit;
+            }
+            return $this->render('adminform');
+        }
+    }
 }

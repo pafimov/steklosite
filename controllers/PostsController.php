@@ -20,6 +20,7 @@ class PostsController extends Controller{
             return $this->render('posts', ['posts' => $posts, 'pagination' => $pagination]);
         }
         public function actionAddpost(){
+            if($_SESSION['logged'] == 1){
             $model = new addpost();
             if(Yii::$app->request->isPost){
                 $model->image = WebUploadedFile::getInstanceByName('image');
@@ -34,6 +35,11 @@ class PostsController extends Controller{
                 }
             }else{
                 return $this->render('addedpost', ['model' => $model, 'success' => false]);
+            }
+            }else{
+                header('Location: /?r=site/admin');
+                print 'lol';
+                exit;
             }
         }
     }

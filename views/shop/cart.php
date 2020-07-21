@@ -7,8 +7,6 @@
                     <div class="col-5"><small class="text-muted">Название</small></div>
                     <div class="col-2"><small class="text-muted">Количество</small></div>
                     <div class="col-3"><small class="text-muted">Цена</small></div>
-
-            
     _HTML_;
     foreach ($data as $key => $value){
         $price = $value['price'] * $value['count'];
