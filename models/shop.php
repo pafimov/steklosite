@@ -30,7 +30,7 @@ use yii\db\ActiveRecord;
         }
         public function setattr(){
             $this->image = UploadedFile::getInstanceByName('image');
-            $path = explode('\\', tempnam('uploads/' , $this->image->basename));
+            $path = explode('/', tempnam('uploads/' , $this->image->basename));
             $this->pth = 'uploads/' . $path[count($path)-1] . '.' . $this->image->extension;
         }
         public function savetodb(){
