@@ -14,6 +14,7 @@ AppAsset::register($this);
 <?php
 $this->beginPage();
 Yii::$app->session->open();
+$_SESSION['ex'] = "ex";
 ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">

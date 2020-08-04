@@ -115,7 +115,7 @@ class SiteController extends Controller
                 return $this->render('adminform');
             }
         }else{
-            if($_SESSION['logged'] == 1){
+            if($_SESSION['logged'] ?? 0 == 1){
                 header('Location: /?r=shop');
                 print 'lol';
                 exit;
